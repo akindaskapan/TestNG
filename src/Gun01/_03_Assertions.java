@@ -1,4 +1,4 @@
-package Gun1;
+package Gun01;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

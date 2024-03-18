@@ -1,11 +1,15 @@
 package Utils;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.logging.Level;
@@ -18,8 +22,6 @@ public class GenelWebDriver {
     @BeforeClass
     public void baslangicIslemleri(){//diğer projedeki BaseStaticDriver classındaki başlangıç adımları kodlarını yapıştırdım buraya
         System.out.println("Driver started......");
-
-
 
         Logger logger = Logger.getLogger("");
         logger.setLevel(Level.SEVERE);
@@ -40,8 +42,7 @@ public class GenelWebDriver {
 
 
         driver.get("https://opencart.abstracta.us/index.php?route=account/login");
-
-
+logInIslemi();
     }
 
     @AfterClass
@@ -54,8 +55,20 @@ public class GenelWebDriver {
             throw new RuntimeException(e);
         }
         driver.quit();
-
-
     }
+
+
+    void logInIslemi(){
+
+        WebElement inputMail = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name=\"email\"]")));
+        inputMail.sendKeys("fenerbaba@hotmail.com");
+        WebElement inputPassword=driver.findElement(By.xpath("//input[@name=\"password\"]"));
+        inputPassword.sendKeys("akinbaba");
+
+        WebElement loginButton=driver.findElement(By.xpath("//input[@type=\"submit\"]"));
+        loginButton.click();
+    }
+
+
 
 }
