@@ -3,7 +3,6 @@ package Utils;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.Test;
 
 import java.util.List;
 
@@ -19,6 +18,12 @@ public static void compareToList(List<String> exoectedList, List<WebElement> act
     }
 
 }
+
+public static void successMessageValidation(){
+    WebElement subscribedText = GenelWebDriver.driver.findElement(By.xpath("//div[@class=\"alert alert-success alert-dismissible\"]"));
+    Assert.assertTrue(subscribedText.getText().contains("Success"));
+}
+
 
 
 }
