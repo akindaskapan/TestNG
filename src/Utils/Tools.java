@@ -25,5 +25,44 @@ public static void successMessageValidation(){
 }
 
 
+public static void editAccount(){
+
+
+    int randomNumber = (int) (Math.random() * 100) + 1;
+
+
+    By link =By.xpath("//div[@id=\"content\"]//a[text()='Edit Account']");
+    By name= By.xpath("//input[@name=\"firstname\"]");
+    By surname= By.xpath("//input[@name=\"lastname\"]");
+    By continueButton=By.xpath("//input[@type=\"submit\"]");
+
+
+        WebElement editAccountLink=GenelWebDriver.driver.findElement(link);
+        editAccountLink.click();
+
+        WebElement nameInput=GenelWebDriver.driver.findElement(name);
+        nameInput.clear();
+        nameInput.sendKeys("AkınTest"+randomNumber);
+
+
+        WebElement surnameInput=GenelWebDriver.driver.findElement(surname);
+        surnameInput.clear();
+        surnameInput.sendKeys("DaşkapanTest"+randomNumber);
+
+        WebElement cntBtn=GenelWebDriver.driver.findElement(continueButton);
+        cntBtn.click();
+
+
+    /**bitime 11dk kala olan kısmı aç izle*/
+
+
+
+
+
+    }
+
+
+
+
 
 }

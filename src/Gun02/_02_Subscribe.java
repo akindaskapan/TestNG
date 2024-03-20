@@ -7,12 +7,13 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 /*
-        Senaryo;
-        1- Siteyi açınız
-        2- Top Menudeki menu elemanlarının olduğunu doğrulayınız.
-        3-İsimlerinin sıralı olduğunu doğrulayınız.
+Senaryo
+  1- Siteyi açınız.
+  2- Newsletter  Subscribe ve UnSubscribe işlemlerini ayrı ayı testlerde yapınız.
+  3- Newsletter  üyelik işlemini, üye ise , üyelikten çıkma, değilse ekleme şeklinde yapınız
+
      */
-public class _02_Subscribe extends GenelWebDriver {
+public class  _02_Subscribe extends GenelWebDriver {
     By newsletterLink =By.xpath("//div[@id=\"content\"]//a[text()='Newsletter']");
     By yesButton =By.xpath("//input[@value=\"1\"]");
 
@@ -53,4 +54,39 @@ public class _02_Subscribe extends GenelWebDriver {
       //Assert.assertEquals(subscribedText.getText(), "Success: Your newsletter subscription has been successfully updated!");
       Tools.successMessageValidation();
   }
+
+
+  @Test(priority = 3)
+    void changeSelection(){
+
+      WebElement link = driver.findElement(newsletterLink);
+      link.click();
+
+
+ WebElement yesTiki=driver.findElement(yesButton);
+ WebElement noTiki=driver.findElement(noButton);
+
+        if (yesTiki.isSelected()){
+            noTiki.click();
+        }
+
+
+        if (noTiki.isSelected()){
+            yesTiki.click();
+        }
+
+      WebElement continueBtn = driver.findElement(continueButton);
+      continueBtn.click();
+
+
+      Tools.successMessageValidation();
+
+
+
+
+  }
+
+
+
+
 }
