@@ -52,6 +52,7 @@ public class _01_validateMenu extends GenelWebDriver {
          * 2 tane listeyi karşılaştıracağım için pratik olsun diye orada metod oluşturup kullandım..*/
         Tools.compareToList(menuNames,topMenu);
 
+
     }
 
 
