@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 
+import javax.tools.Tool;
+
 
 /*
       1- Siteyi açınız.
@@ -23,28 +25,45 @@ public class _03_EditAccount extends GenelWebDriver {
     By continueButton=By.xpath("//input[@type=\"submit\"]");
 
 @Test
-    void editAccount(){
-  //  WebElement editAccountLink=driver.findElement(link);
-  //  editAccountLink.click();
-//
-  //  WebElement nameInput=driver.findElement(name);
-  //  nameInput.clear();
-  //  nameInput.sendKeys("AkınTest");
-//
-//
-  //  WebElement surnameInput=driver.findElement(surname);
-  //  surnameInput.clear();
-  //  surnameInput.sendKeys("DaşkapanTest");
-//
-  //  WebElement cntBtn=driver.findElement(continueButton);
-  //  cntBtn.click();
-  //
-  //  Tools.successMessageValidation();
 
-    Tools.editAccount();
-    Tools.successMessageValidation();
-    Tools.editAccount();
-    Tools.successMessageValidation();
+
+void editAccount(){
+    EditAccount("fener","bahçe");
+    bekle(2);
+    EditAccount("Akın","Daşkapan");
+}
+
+//bu kısım test değil ayrı bir metod yazdım bunun çağırıp kullanmak içinn
+    void EditAccount(String ad , String soyad){
+    WebElement editAccountLink=driver.findElement(link);
+    editAccountLink.click();
+
+    WebElement nameInput=driver.findElement(name);
+    nameInput.clear();
+    nameInput.sendKeys(ad);
+
+
+    WebElement surnameInput=driver.findElement(surname);
+    surnameInput.clear();
+    surnameInput.sendKeys(soyad);
+
+    WebElement cntBtn=driver.findElement(continueButton);
+   cntBtn.click();
+
+   Tools.successMessageValidation();
+
+
+
+
+
+
+
+
+
+   // Tools.editAccount();
+   // Tools.successMessageValidation();
+   // Tools.editAccount();
+   // Tools.successMessageValidation();
 
 }
 
