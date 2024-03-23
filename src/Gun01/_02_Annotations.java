@@ -1,7 +1,6 @@
 package Gun01;
 
 import org.testng.annotations.*;
-
 public class _02_Annotations {
 
     /*
@@ -43,15 +42,12 @@ public class _02_Annotations {
         System.out.println("Her classtan sonra çalışacak : After Class");
     }
 
-
-
                                                         /**ÖĞRENDİĞİM ŞEYLER ÖZET*/
                                                         /** classlardan ve metodlardan önce(testlerden önce ) çalışmasını istediğim şeyleri belirledim
                                                          * örneğin before class'a : driverı başlat yazabilirim
                                                          * after class'a : driverı kapat yazabilirim
                                                          * before method(test) kısmına : testten önce çalışacak şeyleri yazabilirim
                                                          * after method(test) kısmına : testten sonra çalışacak şeyleri yazabilirim**/
-
                                                         //yazdığım beformethod&aftermethod'lar her method için çalışır
     //kodları run ettiğinde zaten bunu gorebilirisn her metoddan once ve sonra belırledıgım şeyler yazıyor
 

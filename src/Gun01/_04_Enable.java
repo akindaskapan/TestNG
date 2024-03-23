@@ -57,6 +57,7 @@ void baslangicIslemleri(){//diğer projedeki BaseStaticDriver classındaki başl
 /**  imlicitlyWait ve explicitWait aynı anda kullanılırsa ikisinde ayarlanan süre toplanır. toplanan süre kadar bekler*/
     }
 
+
     @AfterClass
     void bitisIslemleri(){
         System.out.println("Driver closed.......");

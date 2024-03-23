@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 
 public class _01_Giris  {
 
-
     /**Önceden main açıp komutları yazmak gerekiyordu ama burada main yazmaya gerek yok tek tek test oluşturabiliyoruz*/
 
     //    public static void main(String[] args) {

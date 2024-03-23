@@ -28,8 +28,6 @@ public class _05_Ornek extends GenelWebDriver {
         loginButton.click();
 
 
-
-
     }
 
 
