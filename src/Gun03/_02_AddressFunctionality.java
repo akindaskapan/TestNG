@@ -1,6 +1,7 @@
 package Gun03;
 
 import Utils.GenelWebDriver;
+import Utils.Tools;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,8 +12,8 @@ import org.testng.annotations.Test;
        Senaryo;
        1- Siteyi açınız.
        2- Adress Ekleyiniz.
-       3-
-       4-
+       3- En son eklenen adresi edit yaparak ad ve soyadı değiştirip kaydediniz.
+       4- En son eklenen adresi siliniz.
  */
 public class _02_AddressFunctionality extends GenelWebDriver {
 
@@ -28,10 +29,13 @@ public class _02_AddressFunctionality extends GenelWebDriver {
     By postcode=By.xpath("//input[@name=\"postcode\"]");
 
     By defaultAddressYes=By.xpath("//input[@value=\"1\"]");
+    By defaultAddressNo=By.xpath("//input[@value=\"0\"]");
 
     By continueButton=By.xpath("//input[@type=\"submit\"]");
 
+    By edit=By.xpath("//a[text()='Edit']");
 
+    By delete=By.xpath("//a[text()='Delete']");
 
 
     @Test
@@ -63,36 +67,51 @@ public class _02_AddressFunctionality extends GenelWebDriver {
         WebElement postcodeInput=driver.findElement(postcode);
         postcodeInput.sendKeys("34724");
 
-        bekle(3);
-
 
         WebElement country=driver.findElement(By.xpath("//select[@name=\"country_id\"]"));
         Select countries=new Select(country);
         wait.until(ExpectedConditions.elementToBeClickable(country));
-        //countries.selectByValue("215");
-        countries.selectByIndex(10);
-        bekle(3);
+        countries.selectByValue("215");
 
 
         WebElement region=driver.findElement(By.xpath("//select[@name=\"zone_id\"]"));
         Select regions=new Select(region);
         wait.until(ExpectedConditions.elementToBeClickable(region));
-        //regions.selectByValue("3354");
-        regions.selectByIndex(3);
-        bekle(3);
+        regions.selectByValue("3354");
 
-        WebElement defaultAddress=driver.findElement(defaultAddressYes);
+        WebElement defaultAddress=driver.findElement(defaultAddressNo);
         defaultAddress.click();
 
         WebElement continueBtn=driver.findElement(continueButton);
         continueBtn.click();
 
-        bekle(40);
-
-
+        Tools.successMessageValidation();
     }
 
 
+    @Test(dependsOnMethods = {"addAddress"})
+    void editAddress(){
+        WebElement editButton=driver.findElement(edit);
+        editButton.click();
 
+        WebElement firstNameBoxInput=driver.findElement(firstName);
+        firstNameBoxInput.clear();
+        firstNameBoxInput.sendKeys("Fener");
+
+        WebElement lastNameBoxInput=driver.findElement(lastName);
+        lastNameBoxInput.clear();
+        lastNameBoxInput.sendKeys("Bahçe");
+
+        WebElement defaultAddress=driver.findElement(defaultAddressNo);
+        defaultAddress.click();
+
+        WebElement continueBtn=driver.findElement(continueButton);
+        continueBtn.click();
+
+        WebElement deleteButton=driver.findElement(delete);
+        deleteButton.click();
+
+        Tools.successMessageValidation();
+    }
 
 }

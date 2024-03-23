@@ -38,8 +38,4 @@ public class _01_Dependency {
         System.out.println("Car Stopped.");
     }
 
-
-
-
-
 }

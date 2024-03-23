@@ -21,7 +21,7 @@ public static void compareToList(List<String> exoectedList, List<WebElement> act
 
 public static void successMessageValidation(){
     WebElement subscribedText = GenelWebDriver.driver.findElement(By.xpath("//div[@class=\"alert alert-success alert-dismissible\"]"));
-    Assert.assertTrue(subscribedText.getText().contains("Success"));
+    Assert.assertTrue(subscribedText.getText().contains("success"));
 }
 
 
