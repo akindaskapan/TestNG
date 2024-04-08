@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 /*
        Senaryo;
        1- Siteyi açınız.
@@ -40,6 +42,8 @@ public class _02_AddressFunctionality extends GenelWebDriver {
 
     @Test
     void addAddress(){
+
+
         WebElement addressBookLink=driver.findElement(link);
         addressBookLink.click();
 
@@ -47,10 +51,10 @@ public class _02_AddressFunctionality extends GenelWebDriver {
         newAddressButton.click();
 
         WebElement firstNameBoxInput=driver.findElement(firstName);
-        firstNameBoxInput.sendKeys("Akın");
+        firstNameBoxInput.sendKeys("Fener");
 
         WebElement lastNameBoxInput=driver.findElement(lastName);
-        lastNameBoxInput.sendKeys("Daşkapan");
+        lastNameBoxInput.sendKeys("Bahçe");
 
         WebElement companyInput=driver.findElement(company);
         companyInput.sendKeys("Fenerbahçe Spor Kulübü");
@@ -70,12 +74,14 @@ public class _02_AddressFunctionality extends GenelWebDriver {
 
         WebElement country=driver.findElement(By.xpath("//select[@name=\"country_id\"]"));
         Select countries=new Select(country);
+        //wait.until(ExpectedConditions.stalenessOf(country));  -----> bayat eleman gidene kadar bekle (ülke seçildikten sonra yeni elemana dönüşür (stale element hatası olmaz))
         wait.until(ExpectedConditions.elementToBeClickable(country));
         countries.selectByValue("215");
 
 
         WebElement region=driver.findElement(By.xpath("//select[@name=\"zone_id\"]"));
         Select regions=new Select(region);
+        //wait.until(ExpectedConditions.stalenessOf(region));    ----> bayat eleman gidene kadar bekle (yukarıda seçilen ülkeye ait şehirler yüklendiğinde yeni elemana dönüşür (stale element hatası olmaz))
         wait.until(ExpectedConditions.elementToBeClickable(region));
         regions.selectByValue("3354");
 
@@ -89,29 +95,67 @@ public class _02_AddressFunctionality extends GenelWebDriver {
     }
 
 
-    @Test(dependsOnMethods = {"addAddress"})
-    void editAddress(){
-        WebElement editButton=driver.findElement(edit);
-        editButton.click();
+    @Test(dependsOnMethods = {"editAddress"})
+    void deleteAddresses(){
 
-        WebElement firstNameBoxInput=driver.findElement(firstName);
-        firstNameBoxInput.clear();
-        firstNameBoxInput.sendKeys("Fener");
+        List<WebElement> deleteButtons=driver.findElements(By.xpath("//a[text()='Delete']"));
 
-        WebElement lastNameBoxInput=driver.findElement(lastName);
-        lastNameBoxInput.clear();
-        lastNameBoxInput.sendKeys("Bahçe");
+        List<WebElement> editButtons=driver.findElements(By.xpath("//a[text()='Edit']"));
+        for (int i = 0; i < editButtons.size(); i++) {
+            List<WebElement> editButtons1=driver.findElements(By.xpath("//a[text()='Edit']"));
+//            List<WebElement> editButtons1=driver.findElements(By.xpath("//a[text()='Edit']"));
+            editButtons1.get(i).click();
 
-        WebElement defaultAddress=driver.findElement(defaultAddressNo);
-        defaultAddress.click();
+            WebElement defaultAddress=driver.findElement(defaultAddressNo);
 
-        WebElement continueBtn=driver.findElement(continueButton);
-        continueBtn.click();
+            WebElement backButton=driver.findElement(By.xpath("//a[text()='Back']"));
 
-        WebElement deleteButton=driver.findElement(delete);
-        deleteButton.click();
+            if (defaultAddress.isSelected()){
+                backButton.click();
+                List<WebElement> deleteButtons1=driver.findElements(By.xpath("//a[text()='Delete']"));
+                deleteButtons1.get(i).click();
+            }else{
+                backButton.click();
+            }
+        }
 
-        Tools.successMessageValidation();
+
+
     }
+
+
+  @Test(dependsOnMethods = {"addAddress"})
+  void editAddress(){
+      WebElement editButton=driver.findElement(edit);
+      editButton.click();
+
+      WebElement firstNameBoxInput=driver.findElement(firstName);
+      firstNameBoxInput.clear();
+      firstNameBoxInput.sendKeys("Akın");
+
+      WebElement lastNameBoxInput=driver.findElement(lastName);
+      lastNameBoxInput.clear();
+      lastNameBoxInput.sendKeys("Daşkapan");
+
+      WebElement country=driver.findElement(By.xpath("//select[@name=\"country_id\"]"));
+      Select countries=new Select(country);
+      wait.until(ExpectedConditions.elementToBeClickable(country));
+      countries.selectByValue("215");
+
+
+      WebElement region=driver.findElement(By.xpath("//select[@name=\"zone_id\"]"));
+      Select regions=new Select(region);
+      wait.until(ExpectedConditions.elementToBeClickable(region));
+      regions.selectByValue("3354");
+
+
+      WebElement defaultAddress=driver.findElement(defaultAddressNo);
+      defaultAddress.click();
+
+      WebElement continueBtn=driver.findElement(continueButton);
+       continueBtn.click();
+
+       Tools.successMessageValidation();
+   }
 
 }
