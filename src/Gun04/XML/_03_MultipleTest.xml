@@ -1,0 +1,29 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite 1"><!--   TÜM TESTLERİ KAPSAYAN BÖLÜM  -->
+
+    <test name="Test 1">  <!--   TEST 1'İ KAPSAYAN BÖLÜM  -->
+
+        <classes>   <!--   ÇALIŞACAK SINIFLARIN YAZILDIĞI BÖLÜM -->
+            <class name="Gun04._01_Intro"></class>
+        </classes>
+
+    </test>
+
+    <!-- ************************************************************************************************************-->
+
+    <test name="Test 2">  <!--   TEST 2'Yİ KAPSAYAN BÖLÜM  -->
+
+        <classes>   <!--   ÇALIŞACAK SINIFLARIN YAZILDIĞI BÖLÜM -->
+            <class name="Gun04._02_Intro"></class>
+        </classes>
+
+    </test>
+
+
+    <!--Aynı annotation dan olursa (örneğin 2 testte de @BeforeTest var bu durumda) Class isminin alfabetik sırasına göre çalışır-->
+
+
+
+
+
+</suite>
