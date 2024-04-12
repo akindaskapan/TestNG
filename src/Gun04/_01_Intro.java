@@ -37,9 +37,6 @@ public class _01_Intro {
     @Test
     void testIntro1_2(){System.out.println("Test Intro 2");}
 
-
-
-
     @AfterSuite
     void aSuite(){System.out.println("After Suite");}
     @AfterTest
