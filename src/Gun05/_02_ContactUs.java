@@ -4,6 +4,7 @@ import Utils.GenelWebDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 
@@ -14,8 +15,11 @@ import org.testng.annotations.Test;
  */
 public class _02_ContactUs extends GenelWebDriver {
 
+    //Test dinamik olsun ve her defasında farklı bir parametre girebileyim diye @Parameters'i kullandım. XML'de inceleyebilirsin.
 @Test
-    void contactUs(){
+@Parameters("mesaj") //XML'deki adı.
+    void contactUs(String gelenMesaj)//metoddaki adı    (parametredeki ile buradaki aynı şey)
+    {
         WebElement contactUs=driver.findElement(By.xpath("//a[text()='Contact Us']"));
         contactUs.click();
 
@@ -28,14 +32,14 @@ public class _02_ContactUs extends GenelWebDriver {
       //  emailInputBox.sendKeys("akintest@hotmail.com");
 
         WebElement enquiryInputBox=driver.findElement(By.xpath("//textarea[@name=\"enquiry\"]"));
-        enquiryInputBox.sendKeys("Mesaj deneme en büyük Fener.");
+        enquiryInputBox.sendKeys(gelenMesaj);
 
         WebElement submitButton=driver.findElement(By.xpath("//input[@type=\"submit\"]"));
         submitButton.click();
 
         WebElement contactUsText=driver.findElement(By.xpath("//h1[text()='Contact Us']"));
-        Assert.assertTrue(contactUsText.isDisplayed());
-
+        System.out.println(contactUsText.getText());
+        Assert.assertEquals("Contact Us",contactUsText.getText(),"Karşılaştırma sonucu.");
 
 
     }

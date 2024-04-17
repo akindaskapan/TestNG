@@ -1,0 +1,23 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite 1">
+
+    <!-- burada 2 tane farklı mesaj gönderdim. İkisi tek tek çalışıyor. -->
+
+    <test name="Test 1">
+        <parameter name="keyword" value="Mac"></parameter>
+        <classes>
+            <class name="Gun05._03_SearchFunctionality"></class>
+        </classes>
+    </test>
+
+
+    <test name="Test 2">
+        <parameter name="keyword" value="Samsung"></parameter>
+        <classes>
+            <class name="Gun05._03_SearchFunctionality"></class>
+        </classes>
+    </test>
+
+
+
+</suite>

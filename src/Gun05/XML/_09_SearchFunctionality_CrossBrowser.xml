@@ -1,0 +1,29 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite 1">
+
+
+    <!-- BURADA 2 TANE TEST YAPTIRIYORUM. BİR TANESİ CHROME İLE DİĞERİ İSE FIREFOX İLE YAPILIYOR.-->
+
+
+    <test name="Test 1">
+        <parameter name="keyword" value="Mac"></parameter>
+        <parameter name="browser" value="firefox"></parameter>
+
+        <classes>
+            <class name="Gun05._04_SearchFunctionalityParametreli"></class>
+        </classes>
+    </test>
+
+
+    <test name="Test 2">
+        <parameter name="keyword" value="samsung"></parameter>
+        <parameter name="browser" value="chrome"></parameter>
+
+        <classes>
+            <class name="Gun05._04_SearchFunctionalityParametreli"></class>
+        </classes>
+    </test>
+
+
+
+</suite>
