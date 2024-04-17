@@ -20,9 +20,7 @@
             <class name="Gun05._01_Groups">
 
                 <methods>
-
                     <exclude name="Test4"></exclude>  <!-- SmokeTest'lerin içindeki Test4 testi çalışmasın dedim.-->
-
                 </methods>
             </class>
 
