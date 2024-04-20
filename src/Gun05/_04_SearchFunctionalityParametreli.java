@@ -18,8 +18,8 @@ import java.util.List;
      */
 public class _04_SearchFunctionalityParametreli extends ParametreliWebDriver  {
 
-@Test
 @Parameters("keyword")
+@Test
     void searchFunctionality(String keyword) {
         WebElement searchInputBox = driver.findElement(By.xpath("//input[@name=\"search\"]"));
         searchInputBox.sendKeys(keyword);
@@ -29,14 +29,9 @@ public class _04_SearchFunctionalityParametreli extends ParametreliWebDriver  {
 
         List<WebElement> products = driver.findElements(By.xpath("//div[@class=\"row\"][3]//div[@class=\"product-layout product-grid col-lg-3 col-md-3 col-sm-6 col-xs-12\"]//div[@class=\"caption\"]//h4"));
 
-    for (int i = 0; i < products.size(); i++) {
-        Assert.assertTrue(products.get(i).getText().contains(keyword));
+
+    for (WebElement urunlerinAciklamalari : products) {
+    Assert.assertTrue(urunlerinAciklamalari.getText().toLowerCase().contains(keyword));
     }
-
     }
-
-
-
-
-
 }

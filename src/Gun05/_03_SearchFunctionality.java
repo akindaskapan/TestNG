@@ -33,6 +33,13 @@ public class _03_SearchFunctionality extends GenelWebDriver {
         Assert.assertTrue(products.get(i).getText().contains(keyword));
     }
 
+
+  // for (int i = 0; i < products.size(); i++) {
+  //     Assert.assertTrue(products.get(i).getText().toLowerCase().contains(keyword));
+  // }
+
+
+
     }
 
 
