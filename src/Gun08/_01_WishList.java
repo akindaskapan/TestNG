@@ -49,12 +49,4 @@ public class _01_WishList extends GenelWebDriver {
         Assert.assertTrue(bulundu); //true değilse hata verecek
 
     }
-
-
-
-
-
-
-
-
 }
