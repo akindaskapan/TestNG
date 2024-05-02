@@ -38,7 +38,7 @@ public class GenelWebDriver {
         wait=new WebDriverWait(driver, Duration.ofSeconds(30));
 
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));/**başta sayfa yüklenirken düzgün ve tamamen yüklenmesi için belirlediğim saniye (30sn) kadar sayfaya süre tanır. eğer sayfa hızlı ve düzgün yüklenirse bunu kullanmaz.**/
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));// bu da üstteki kod gibi farkı : bu, süre tanımayı her eleman için yapar.(bazen sayfa yüklenir ama bazı elemanlar  yuklenmez falan o yuzden) elemanın yüklenmesini bekler.
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));// bu da üstteki kod gibi farkı : bu, süre tanımayı her eleman için yapar.(bazen sayfa yüklenir ama bazı elemanlar  yuklenmez falan o yuzden) elemanın yüklenmesini bekler.
 
 
         driver.get("https://opencart.abstracta.us/index.php?route=account/login");
@@ -58,16 +58,16 @@ logInIslemi();
     }
 
 
-    void logInIslemi(){
+  void logInIslemi(){
 
-        WebElement inputMail = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name=\"email\"]")));
-        inputMail.sendKeys("fenerbaba@hotmail.com");
-        WebElement inputPassword=driver.findElement(By.xpath("//input[@name=\"password\"]"));
-        inputPassword.sendKeys("akinbaba");
+      WebElement inputMail = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name=\"email\"]")));
+      inputMail.sendKeys("fenerbaba@hotmail.com");
+      WebElement inputPassword=driver.findElement(By.xpath("//input[@name=\"password\"]"));
+      inputPassword.sendKeys("akinbaba");
 
-        WebElement loginButton=driver.findElement(By.xpath("//input[@type=\"submit\"]"));
-        loginButton.click();
-    }
+      WebElement loginButton=driver.findElement(By.xpath("//input[@type=\"submit\"]"));
+      loginButton.click();
+  }
 
     public static void bekle(int saniye) {
         try {

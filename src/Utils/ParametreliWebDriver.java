@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 
 public class ParametreliWebDriver {
 
-    public static WebDriver driver;
+    public WebDriver driver;
     public static WebDriverWait wait;
     @Parameters("browser")
     @BeforeClass

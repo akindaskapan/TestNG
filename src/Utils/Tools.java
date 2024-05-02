@@ -24,6 +24,11 @@ public static void successMessageValidation(){
     Assert.assertTrue(subscribedText.getText().contains("success"));
 }
 
+    public static double WebElementStringToDouble(WebElement e) {
+        String result=e.getText();
+        result=result.replaceAll("[^\\d.,]",""); //nokta , virgül , ve sayı dışındaki tüm karakterleri temizle
+        return Double.parseDouble(result);
+    }
 
 public static void editAccount(String ad , String soyad){
 
@@ -51,7 +56,9 @@ public static void editAccount(String ad , String soyad){
 
     }
 
-
+public static int randomGenerator(int max){
+    return  (int) (Math.random() * max);
+}
 
 
 

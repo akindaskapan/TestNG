@@ -3,6 +3,7 @@ package Gun07;
 import Utils.GenelWebDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -15,8 +16,8 @@ import java.util.List;
    3- Çıkan sonuçlardan ilkini sepete atınız.
    4- Shopping Chart a tıklatınız.
    5- Checkout yapınız.
-   6- Continue butonalarına tıklatıp bilgileri giriniz.
-   7- En confirm ile siparişi verdiğinizi doğrulayınız.
+   6- Continue butonlarına tıklatıp bilgileri giriniz.
+   7- En son confirm ile siparişi verdiğinizi doğrulayınız.
       doğrulamayı çıkan sayfadaki "Your order has been placed" yazısı ile yapınız.
 */
 
@@ -26,7 +27,7 @@ public class _02_PlaceOrder extends GenelWebDriver {
 
 
     @Test
-    void shoppingChart(){
+    void proceedToCheckout(){
 
         WebElement searchInputBox=driver.findElement(By.xpath("//input[@name=\"search\"]"));
         searchInputBox.sendKeys("ipod");
@@ -43,19 +44,19 @@ public class _02_PlaceOrder extends GenelWebDriver {
         WebElement checkoutBtn=driver.findElement(By.xpath("//a[text()='Checkout']"));
         checkoutBtn.click();
 
-        WebElement continueBtn=driver.findElement(By.xpath("//input[@value=\"Continue\"]"));
+        WebElement continueBtn=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@value=\"Continue\"]")));
         continueBtn.click();
 
-        WebElement shippingAddressBtn=driver.findElement(By.id("button-shipping-address"));
+        WebElement shippingAddressBtn=wait.until(ExpectedConditions.elementToBeClickable(By.id("button-shipping-address")));
         shippingAddressBtn.click();
 
-        WebElement shippingMethodBtn=driver.findElement(By.id("button-shipping-method"));
+        WebElement shippingMethodBtn=wait.until(ExpectedConditions.elementToBeClickable(By.id("button-shipping-method")));
         shippingMethodBtn.click();
 
         WebElement checkBox=driver.findElement(By.xpath("//input[@value=\"1\"]"));
         checkBox.click();
 
-        WebElement paymentMethod=driver.findElement(By.xpath("//input[@value=\"cod\"]"));
+        WebElement paymentMethod=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@value=\"cod\"]")));
         paymentMethod.click();
 
         WebElement paymentMethodContinueBtn=driver.findElement(By.id("button-payment-method"));
@@ -65,15 +66,10 @@ public class _02_PlaceOrder extends GenelWebDriver {
         WebElement confirmOrderBtn=driver.findElement(By.xpath("//input[@id=\"button-confirm\"]"));
         confirmOrderBtn.click();
 
-        List<WebElement> confirmMsg=driver.findElements(By.xpath("//h1[text()='Your order has been placed!']"));
-        if (confirmMsg.size()>0)
-        {
-            Assert.assertTrue(confirmMsg.get(0).isDisplayed());
-        }
+        wait.until(ExpectedConditions.urlContains("success"));
 
+        WebElement confirmText = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[id='content']>h1")));
 
-
+        Assert.assertEquals(confirmText.getText(),"Your order has been placed!","Karşılaştırma Sonucu : ");
     }
-
-
 }
