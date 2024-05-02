@@ -35,20 +35,12 @@ public class _01_DataProvider {
     }
 
     @DataProvider(name = "users")// DataProvider a isim verdim.            -------> verilerin olduğu metod
-    public Object[] getData2(){// DataProvider olarak kullanılcak metodun tipi Object olmak zorunda.
+    public Object[] getData2() {// DataProvider olarak kullanılcak metodun tipi Object olmak zorunda.
 
-        Object[] data={"Travis","Scott","NLE","Choppa"};
+
+        Object[] data = {"Travis", "Scott", "NLE", "Choppa"};
 
         return data;
     }
-
-
-
-
-
-
-
-
-
 
 }
