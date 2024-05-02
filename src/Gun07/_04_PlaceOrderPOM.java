@@ -36,5 +36,4 @@ public class _04_PlaceOrderPOM extends GenelWebDriver {
         Assert.assertEquals(confirmText.getText(),"Your order has been placed!","Karşılaştırma Sonucu : ");
     }
 
-
 }
